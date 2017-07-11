@@ -21,10 +21,12 @@
 
  Have used the basic platform engine code from codepen. Restructured the code,
  added documentation and explanations. Retracted map settings to a external file
- in the Maps directory. Added and changed dialogs and user interactions. 
+ in the Maps directory. Added and changed dialogs and user interactions.
  */
 
-/* Labyrinth engine */
+/*
+* LABYRINTH ENGINE
+*/
 var Labyrinth = function () {
 
     this.alert_errors   = false;
@@ -50,17 +52,14 @@ var Labyrinth = function () {
     };
 
     this.player = {
-
         loc: {
             x: 0,
             y: 0
         },
-
         vel: {
             x: 0,
             y: 0
         },
-
         can_jump: true
     };
 
@@ -68,27 +67,48 @@ var Labyrinth = function () {
     window.onkeyup   = this.keyup.bind(this);
 };
 
+
+/*
+* ERROR FUNCTION
+*/
 Labyrinth.prototype.error = function (message) {
-
-    if (this.alert_errors) alert(message);
-    if (this.log_info) console.log(message);
+    if (this.alert_errors) {
+        alert(message);
+    }
+    if (this.log_info) {
+        console.log(message);
+    }
 };
 
+
+/*
+* LOG FUNCTION
+* @param {string} message
+*/
 Labyrinth.prototype.log = function (message) {
-
-    if (this.log_info) console.log(message);
+    if (this.log_info) {
+        console.log(message);
+    }
 };
 
-Labyrinth.prototype.set_viewport = function (x, y) {
 
+/*
+* SETS THE VIEWPORT
+* @param {number} x
+* @param {number} y
+ */
+Labyrinth.prototype.set_viewport = function (x, y) {
     this.viewport.x = x;
     this.viewport.y = y;
 };
 
+
+/*
+* KEYDOWN
+* @param e (keypress)
+*/
 Labyrinth.prototype.keydown = function (e) {
-
     var _this = this;
-
     switch (e.keyCode) {
         case 37:
             _this.key.left = true;
@@ -102,10 +122,13 @@ Labyrinth.prototype.keydown = function (e) {
     }
 };
 
+
+/*
+* KEYUP
+* @param e (keypress)
+*/                     
 Labyrinth.prototype.keyup = function (e) {
-
     var _this = this;
-
     switch (e.keyCode) {
         case 37:
             _this.key.left = false;
@@ -121,8 +144,10 @@ Labyrinth.prototype.keyup = function (e) {
 
 
 /*
-* Function loads a given map
+* LOADS MAP
 * Required: keys, data (of tiles), velocity, gravity, player, and scripts
+* @param {variable} map (variable from external file, the map to be used)
+* @return (boolean} true if map exists, else false
 */
 Labyrinth.prototype.load_map = function (map) {
 
@@ -189,18 +214,31 @@ Labyrinth.prototype.load_map = function (map) {
 };
 
 
-/* Getter for map */
-Labyrinth.prototype.get_tile = function (x, y) {
 
+/*
+* GET TILE
+* @param {number} x (x-coordinate of tile)
+* @param {number} y (y-coordinate of tile)
+* @return {number} tile-type
+*/
+Labyrinth.prototype.get_tile = function (x, y) {
     return (this.current_map.data[y] && this.current_map.data[y][x]) ? this.current_map.data[y][x] : 0;
 };
 
 
 /* Draws a tile with a (x,y) position and context */
+/*
+ * DRAWS TILE
+ * @param {number} x (x-coordinate of tile)
+ * @param {number} y (y-coordinate of tile)
+ * @param {number} tile
+ * @param {context}
+ */
 Labyrinth.prototype.draw_tile = function (x, y, tile, context) {
 
-    if (!tile || !tile.colour) return;
-
+    if (!tile || !tile.colour){
+        return;
+    }
     context.fillStyle = tile.colour;
     context.fillRect(
         x,
@@ -211,7 +249,11 @@ Labyrinth.prototype.draw_tile = function (x, y, tile, context) {
 };
 
 
-/* Draws the map */
+/*
+ * DRAWS THE MAP
+ * @param {context}
+ * @param {number} fore (used to check if its a water tile)
+ */
 Labyrinth.prototype.draw_map = function (context, fore) {
 
     for (var y = 0; y < this.current_map.data.length; y++) {
@@ -240,7 +282,9 @@ Labyrinth.prototype.draw_map = function (context, fore) {
 };
 
 
-/* Function that moves the player (ball) around the map */
+/*
+ * MOVES PLAYER ON THE MAP
+ */
 Labyrinth.prototype.move_player = function () {
 
     var tX = this.player.loc.x + this.player.vel.x;
@@ -293,18 +337,17 @@ Labyrinth.prototype.move_player = function () {
 
     } else this.jump_switch++;
 
+
     this.player.vel.x = Math.min(Math.max(this.player.vel.x, -this.current_map.vel_limit.x), this.current_map.vel_limit.x);
     this.player.vel.y = Math.min(Math.max(this.player.vel.y, -this.current_map.vel_limit.y), this.current_map.vel_limit.y);
-
     this.player.loc.x += this.player.vel.x;
     this.player.loc.y += this.player.vel.y;
-
     this.player.vel.x *= .9;
+    var bounce;
 
     if (left1.solid || left2.solid || right1.solid || right2.solid) {
 
         /* fix overlap */
-
         while (this.get_tile(Math.floor(this.player.loc.x / this.tile_size), y_near1).solid
         || this.get_tile(Math.floor(this.player.loc.x / this.tile_size), y_near2).solid)
             this.player.loc.x += 0.1;
@@ -314,8 +357,7 @@ Labyrinth.prototype.move_player = function () {
             this.player.loc.x -= 0.1;
 
         /* tile bounce */
-
-        var bounce = 0;
+        bounce = 0;
 
         if (left1.solid && left1.bounce > bounce) bounce = left1.bounce;
         if (left2.solid && left2.bounce > bounce) bounce = left2.bounce;
@@ -329,7 +371,6 @@ Labyrinth.prototype.move_player = function () {
     if (top1.solid || top2.solid || bottom1.solid || bottom2.solid) {
 
         /* fix overlap */
-
         while (this.get_tile(x_near1, Math.floor(this.player.loc.y / this.tile_size)).solid
         || this.get_tile(x_near2, Math.floor(this.player.loc.y / this.tile_size)).solid)
             this.player.loc.y += 0.1;
@@ -339,22 +380,18 @@ Labyrinth.prototype.move_player = function () {
             this.player.loc.y -= 0.1;
 
         /* tile bounce */
-
-        var bounce = 0;
+        bounce = 0;
 
         if (top1.solid && top1.bounce > bounce) bounce = top1.bounce;
         if (top2.solid && top2.bounce > bounce) bounce = top2.bounce;
         if (bottom1.solid && bottom1.bounce > bounce) bounce = bottom1.bounce;
         if (bottom2.solid && bottom2.bounce > bounce) bounce = bottom2.bounce;
-
         this.player.vel.y *= -bounce || 0;
 
         if ((bottom1.solid || bottom2.solid) && !tile.jump) {
-
             this.player.on_floor = true;
             this.player.can_jump = true;
         }
-
     }
 
     /* Adjusts the camera based on player movement */
@@ -363,56 +400,43 @@ Labyrinth.prototype.move_player = function () {
     var c_y = Math.round(this.player.loc.y - this.viewport.y/2);
     var x_dif = Math.abs(c_x - this.camera.x);
     var y_dif = Math.abs(c_y - this.camera.y);
+    var mag;
 
     if(x_dif > 5) {
-        var mag = Math.round(Math.max(1, x_dif * 0.1));
+        mag = Math.round(Math.max(1, x_dif * 0.1));
 
-        if(c_x != this.camera.x) {
+        if(c_x !== this.camera.x) {
             this.camera.x += c_x > this.camera.x ? mag : -mag;
 
             if(this.limit_viewport) {
-                this.camera.x =
-                    Math.min(
-                        this.current_map.width_p - this.viewport.x + this.tile_size,
-                        this.camera.x
-                    );
-                this.camera.x =
-                    Math.max(
-                        0,
-                        this.camera.x
-                    );
+                this.camera.x = Math.min(this.current_map.width_p - this.viewport.x + this.tile_size, this.camera.x);
+                this.camera.x = Math.max(0, this.camera.x);
             }
         }
     }
 
     if(y_dif > 5) {
-        var mag = Math.round(Math.max(1, y_dif * 0.1));
+        mag = Math.round(Math.max(1, y_dif * 0.1));
 
-        if(c_y != this.camera.y) {
+        if(c_y !== this.camera.y) {
             this.camera.y += c_y > this.camera.y ? mag : -mag;
 
             if(this.limit_viewport) {
-                this.camera.y =
-                    Math.min(
-                        this.current_map.height_p - this.viewport.y + this.tile_size,
-                        this.camera.y
-                    );
-                this.camera.y =
-                    Math.max(
-                        0,
-                        this.camera.y
-                    );
+                this.camera.y = Math.min(this.current_map.height_p - this.viewport.y + this.tile_size, this.camera.y);
+                this.camera.y = Math.max(0, this.camera.y);
             }
         }
     }
 
-    if(this.last_tile != tile.id && tile.script) {
+    if(this.last_tile !== tile.id && tile.script) {
         eval(this.current_map.scripts[tile.script]);
     }
     this.last_tile = tile.id;
 };
 
-/* Updates the player */
+/*
+ * UPDATES THE PLAYER
+ */
 Labyrinth.prototype.update_player = function () {
     if (this.key.left) {
         if (this.player.vel.x > -this.current_map.vel_limit.x)
@@ -433,7 +457,11 @@ Labyrinth.prototype.update_player = function () {
     this.move_player();
 };
 
-/* Draws the player */
+
+/*
+ * DRAWS THE PLAYER
+ * @param {context}
+ */
 Labyrinth.prototype.draw_player = function (context) {
     context.fillStyle = this.player.colour;
     context.beginPath();
@@ -447,10 +475,19 @@ Labyrinth.prototype.draw_player = function (context) {
     context.fill();
 };
 
+
+/*
+* UPDATE FUNCTION
+*/
 Labyrinth.prototype.update = function () {
     this.update_player();
 };
 
+
+/*
+ * DRAW FUNCTION
+ * @param {context}
+ */
 Labyrinth.prototype.draw = function (context) {
     this.draw_map(context, false);
     this.draw_player(context);
