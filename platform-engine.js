@@ -18,10 +18,13 @@
  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  THE SOFTWARE.
+
+ Have used the basic platform engine code from codepen. Restructured the code,
+ added documentation and explanations. Retracted map settings to a external file
+ in the Maps directory. Added and changed dialogs and user interactions. 
  */
 
 /* Labyrinth engine */
-
 var Labyrinth = function () {
 
     this.alert_errors   = false;
@@ -212,11 +215,9 @@ Labyrinth.prototype.draw_tile = function (x, y, tile, context) {
 Labyrinth.prototype.draw_map = function (context, fore) {
 
     for (var y = 0; y < this.current_map.data.length; y++) {
-
         for (var x = 0; x < this.current_map.data[y].length; x++) {
 
             if ((!fore && !this.current_map.data[y][x].fore) || (fore && this.current_map.data[y][x].fore)) {
-
                 var t_x = (x * this.tile_size) - this.camera.x;
                 var t_y = (y * this.tile_size) - this.camera.y;
 
@@ -244,7 +245,6 @@ Labyrinth.prototype.move_player = function () {
 
     var tX = this.player.loc.x + this.player.vel.x;
     var tY = this.player.loc.y + this.player.vel.y;
-
     var offset = Math.round((this.tile_size / 2) - 1);
 
     var tile = this.get_tile(
