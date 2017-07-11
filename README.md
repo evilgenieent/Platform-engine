@@ -12,3 +12,4 @@ Made a lot of code changes and restructures from the original code.
 - Fix script structure
 - Add timer
 - Add more maps
+- Add checkpoints
