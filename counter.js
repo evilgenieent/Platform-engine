@@ -5,3 +5,4 @@ if(death_counter === 3) {
 } else {
     game.load_map(map2);
 }
+document.getElementById("death_counter").innerHTML = death_counter;
