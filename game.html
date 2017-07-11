@@ -31,14 +31,13 @@
 
         var canvas = document.getElementById('canvas'), ctx = canvas.getContext('2d');
 
-        canvas.width = 800;
-        canvas.height = 800;
+        canvas.width = 400;
+        canvas.height = 400;
 
         /* Game setup */
-        var maps = [map1, map2, map3];
         var game = new Labyrinth();
         game.set_viewport(canvas.width, canvas.height);
-        game.load_map(maps[2]);
+        game.load_map(map1);
 
         /* Limit the viewport to the confines of the map */
 

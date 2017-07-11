@@ -73,6 +73,7 @@ var Labyrinth = function () {
 
 /*
 * ERROR FUNCTION
+* @param {string} message
 */
 Labyrinth.prototype.error = function (message) {
     if (this.alert_errors) {
