@@ -6,6 +6,7 @@ Made a lot of code changes and restructures from the original code.
 - Restructured project structure
 - Added death counter, to limit number of tries total
 - Set up next level to change map if you complete one
+- 3 maps, with increasing difficulty
 
 
 ## TODO:
