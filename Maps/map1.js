@@ -136,11 +136,9 @@ var map1 = {
     /* scripts referred to by the "script" variable in the tile keys */
 
     scripts: {
-        /* you can just use "this" instead of your engine variable ("game"), but Codepen doesn't like it */
         change_colour: 'game.player.colour = "#"+(Math.random()*0xFFFFFF<<0).toString(16);',
-        /* you could load a new map variable here */
-        next_level: 'alert("Yay! You made it through the map, onwards to the next!"); death_counter = 0; game.load_map(map2)',
-        death: '++death_counter; if(death_counter === 3) {death_counter = 0; game.load_map(map1);} else {game.load_map(map1);} document.getElementById("death_counter").innerHTML = death_counter;',
+        next_level: 'alert("Yay! You made it through the map, onwards to the next!"); death_counter = 0; game.load_map(map2);',
+        death: '++death_counter; if(death_counter === 3) {alert("You died! Start again."); death_counter = 0; game.load_map(map1);} else {game.load_map(map1);} document.getElementById("death_counter").innerHTML = death_counter;',
         unlock: 'game.current_map.keys[10].solid = 0;game.current_map.keys[10].colour = "#888";'
     }
 };
