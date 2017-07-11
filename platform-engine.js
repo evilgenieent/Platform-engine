@@ -222,12 +222,9 @@ Labyrinth.prototype.load_map = function (map) {
         x: 0,
         y: 0
     };
-
     this.log('Successfully loaded map data.');
-
     return true;
 };
-
 
 
 /*
