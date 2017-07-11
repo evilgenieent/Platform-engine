@@ -1,6 +1,6 @@
-#Platform engine for Labyrinth game
+# Platform engine for Labyrinth game
 
-Used an existing platform for developing the game.
+### Used an existing platform for developing the game.
 Made a lot of code changes and restructures from the original code.
 - Added new, more difficult map
 - Restructured project structure
@@ -8,7 +8,7 @@ Made a lot of code changes and restructures from the original code.
 - Set up next level to change map if you complete one
 
 
-TODO: 
+## TODO: 
 - Fix script structure
 - Add timer
 - Add more maps
