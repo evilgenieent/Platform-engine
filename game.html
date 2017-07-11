@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Platform engine</title>
+    <link rel="stylesheet" type="text/css" href="style.css"/>
+    <script type="text/javascript" src="platform-engine.js"></script>
+    <script type="text/javascript" src="Maps/map1.js"></script>
+</head>
+<body>
+<canvas id="canvas"></canvas>
+
+<p>
+    Use the left, right and up arrow keys to move.
+</p>
+<p class="info">
+    The map data is fully customisable and scriptable (all contained within the "map" variable). See the comments in the code for instructions.
+</p>
+    <script type="text/javascript">
+
+        window.requestAnimFrame =
+            window.requestAnimationFrame || window.webkitRequestAnimationFrame ||
+            window.mozRequestAnimationFrame || window.oRequestAnimationFrame ||  window.msRequestAnimationFrame ||
+            function(callback) {
+                return window.setTimeout(callback, 1000 / 60);
+            };
+
+        var canvas = document.getElementById('canvas'), ctx = canvas.getContext('2d');
+
+        canvas.width = 1000;
+        canvas.height = 1000;
+
+        /* Game setup */
+
+        var game = new Labyrinth();
+        game.set_viewport(canvas.width, canvas.height);
+        game.load_map(map1);
+
+        /* Limit the viewport to the confines of the map */
+
+        game.limit_viewport = true;
+
+        var Loop = function () {
+
+            ctx.fillStyle = '#333';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+            game.update();
+            game.draw(ctx);
+
+            window.requestAnimFrame(Loop);
+        }
+
+        Loop();
+
+    </script>
+</body>
+</html>
+
+
+
