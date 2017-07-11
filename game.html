@@ -3,20 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <title>Platform engine</title>
+    <h1>Labyrinth game</h1>
     <link rel="stylesheet" type="text/css" href="style.css"/>
     <script type="text/javascript" src="platform-engine.js"></script>
+    <script type="text/javascript" src="Maps/map1.js"></script>
     <script type="text/javascript" src="Maps/map2.js"></script>
 </head>
 <body>
 <canvas id="canvas"></canvas>
 
-<p>
-    Use the left, right and up arrow keys to move.
-</p>
+
+<p>Death count:</p>
+<p id="death_counter"></p>
+
 <p class="info">
-    The map data is fully customisable and scriptable (all contained within the "map" variable). See the comments in the code for instructions.
+    Use arrows to move. As a player you have to get to the end of the Labyrinth. Remember you have 3 lives to complete all maps! 2 maps are included.
 </p>
     <script type="text/javascript">
+
 
         window.requestAnimFrame =
             window.requestAnimationFrame || window.webkitRequestAnimationFrame ||
@@ -27,29 +31,26 @@
 
         var canvas = document.getElementById('canvas'), ctx = canvas.getContext('2d');
 
-        canvas.width = 1000;
-        canvas.height = 1000;
+        canvas.width = 400;
+        canvas.height = 400;
 
         /* Game setup */
-
+        var maps = [map1, map2];
         var game = new Labyrinth();
         game.set_viewport(canvas.width, canvas.height);
-        game.load_map(map2);
+        game.load_map(maps[1]);
 
         /* Limit the viewport to the confines of the map */
 
         game.limit_viewport = true;
-
+        var game_finished;
         var Loop = function () {
-
             ctx.fillStyle = '#333';
             ctx.fillRect(0, 0, canvas.width, canvas.height);
             game.update();
             game.draw(ctx);
-
             window.requestAnimFrame(Loop);
         }
-
         Loop();
 
     </script>

@@ -27,6 +27,9 @@
 /*
 * LABYRINTH ENGINE
 */
+
+var death_counter = 0;
+
 var Labyrinth = function () {
 
     this.alert_errors   = false;
@@ -453,6 +456,10 @@ Labyrinth.prototype.update_player = function () {
     if (this.key.right) {
         if (this.player.vel.x < this.current_map.vel_limit.x)
             this.player.vel.x += this.current_map.movement_speed.left;
+    }
+
+    if(this.get_tile(this.player.loc.x, this.player.loc.y) === this.current_map.death) {
+        alert("Ouch!!");
     }
     this.move_player();
 };
