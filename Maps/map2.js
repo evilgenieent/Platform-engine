@@ -1,6 +1,4 @@
-/**
- * Created by DidrikKvanvik on 11.07.2017.
- */
+
 var map2 = {
 
     tile_size: 16,
