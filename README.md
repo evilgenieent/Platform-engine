@@ -8,7 +8,7 @@ Made a lot of code changes and restructures from the original code.
 - Set up next level to change map if you complete one
 
 
-## TODO: 
+## TODO:
 - Add timer
 - Add more maps
 - Add checkpoints
