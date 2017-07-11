@@ -8,6 +8,7 @@
     <script type="text/javascript" src="platform-engine.js"></script>
     <script type="text/javascript" src="Maps/map1.js"></script>
     <script type="text/javascript" src="Maps/map2.js"></script>
+    <script type="text/javascript" src="Maps/map3.js"></script>
 </head>
 <body>
 <canvas id="canvas"></canvas>
@@ -30,14 +31,14 @@
 
         var canvas = document.getElementById('canvas'), ctx = canvas.getContext('2d');
 
-        canvas.width = 400;
-        canvas.height = 400;
+        canvas.width = 800;
+        canvas.height = 800;
 
         /* Game setup */
-        var maps = [map1, map2];
+        var maps = [map1, map2, map3];
         var game = new Labyrinth();
         game.set_viewport(canvas.width, canvas.height);
-        game.load_map(maps[0]);
+        game.load_map(maps[2]);
 
         /* Limit the viewport to the confines of the map */
 
