@@ -13,3 +13,6 @@ Made a lot of code changes and restructures from the original code.
 - Add timer
 - Add more maps
 - Add checkpoints
+
+### Copyright
+Copyright (c) 2013 dissimulate at codepen
