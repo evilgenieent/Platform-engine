@@ -19,7 +19,7 @@
  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
  THE SOFTWARE.
 
- Have used the basic platform engine code from codepen. Restructured the code,
+ Have used the basic platform engine code. Restructured the code,
  added documentation and explanations. Retracted map settings to a external file
  in the Maps directory. Added and changed dialogs and user interactions.
  */
@@ -143,48 +143,7 @@ Labyrinth.prototype.keyup = function (e) {
             break;
     }
 };
-var add_functionality = function (map) {
-    /* Gravity */
-    map.gravity = {
-        x: 0,
-        y: 0.3
-    };
-    /* Velocity limits */
-    map.vel_limit = {
-        x: 2,
-        y: 16
-    };
-    /* Movement speeds */
-    map.movement_speed = {
-        jump: 6,
-        left: 0.3,
-        right: 0.3
-    };
-};
 
-var add_scripts = function (map) {
-    map.keys = [
-        {id: 0, colour: '#333', solid: 0},
-        {id: 1, colour: '#888', solid: 0},
-        {id: 2, colour: '#555', solid: 1, bounce: 0.35},
-        {id: 3, colour: 'rgba(121, 220, 242, 0.4)', friction: {x: 0.9,y: 0.9}, gravity: {x: 0,y: 0.1}, jump: 1, fore: 1},
-        {id: 4, colour: '#777', jump: 1},
-        {id: 5, colour: '#E373FA', solid: 1, bounce: 1.1},
-        {id: 6, colour: '#666', solid: 1, bounce: 0},
-        {id: 7, colour: '#73C6FA', solid: 0, script: 'change_colour'},
-        {id: 8, colour: '#67e534', solid: 0, script: 'next_level'},
-        {id: 9, colour: '#C93232', solid: 0, script: 'death'},
-        {id: 10, colour: '#555', solid: 1},
-        {id: 11, colour: '#f1f218', solid: 0, script: 'unlock'}
-    ];
-
-    map.script = {
-        change_colour: 'game.player.colour = "#"+(Math.random()*0xFFFFFF<<0).toString(16);',
-        next_level: 'alert("Yay! You made it through the map, onwards to the next!"); game.load_map(list_of_maps[++map_counter]);',
-        death: '++death_counter; if(death_counter === 3) { alert("You died! Start again."); death_counter = 0; map_counter = 0; game.load_map(list_of_maps[map_counter]); } else { game.load_map(list_of_maps[map_counter]); } document.getElementById("death_counter").innerHTML = death_counter;',
-        unlock: 'game.current_map.keys[10].solid = 0;game.current_map.keys[10].colour = "#888";'
-    };
-};
 
 /*
 * LOADS MAP
