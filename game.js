@@ -22,6 +22,8 @@ canvas.height = 400;
 
 /* Game setup */
 var game = new Labyrinth();
+
+//Add 'testMap' for testing
 var list_of_maps = [map1, map2, map3];
 
 /* Setup map setting s*/
