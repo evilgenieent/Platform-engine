@@ -240,7 +240,7 @@ Labyrinth.prototype.get_tile = function (x, y) {
 };
 
 
-/* Draws a tile with a (x,y) position and context */
+/* Draws a tile with a (x,y) position */
 /*
  * DRAWS TILE
  * @param {number} x (x-coordinate of tile)
@@ -467,10 +467,6 @@ Labyrinth.prototype.update_player = function () {
     if (this.key.right) {
         if (this.player.vel.x < this.current_map.vel_limit.x)
             this.player.vel.x += this.current_map.movement_speed.left;
-    }
-
-    if(this.get_tile(this.player.loc.x, this.player.loc.y) === this.current_map.death) {
-        alert("Ouch!!");
     }
     this.move_player();
 };

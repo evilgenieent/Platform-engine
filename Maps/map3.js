@@ -73,6 +73,5 @@ var map3 = {
         x: 4,
         y: 4,
         colour: '#fff'
-    },
-    
+    }
 };
