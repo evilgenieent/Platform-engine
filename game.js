@@ -18,6 +18,11 @@ var canvas = document.getElementById('canvas'), ctx = canvas.getContext('2d');
 canvas.width = 400;
 canvas.height = 400;
 
+function reset_death_counter() {
+    death_counter = 0;
+    document.getElementById("death_counter").innerHTML = death_counter;
+}
+
 /* GENERAL GAME SETUP */
 
 /* Game setup */
