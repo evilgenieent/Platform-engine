@@ -82,27 +82,6 @@ var map2 = {
         [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 2, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
     ],
 
-    /* Gravity */
-
-    gravity: {
-        x: 0,
-        y: 0.3
-    },
-
-    /* Velocity limits */
-
-    vel_limit: {
-        x: 2,
-        y: 16
-    },
-
-    /* Movement speeds */
-
-    movement_speed: {
-        jump: 6,
-        left: 0.3,
-        right: 0.3
-    },
 
     /* The coordinates at which the player spawns and the colour of the player */
 
