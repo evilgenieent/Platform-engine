@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Platform engine</title>
-    <h1>Labyrinth game</h1>
+
     <link rel="stylesheet" type="text/css" href="css/style.css"/>
     <script type="text/javascript" src="platform-engine.js"></script>
     <script type="text/javascript" src="Maps/map1.js"></script>
@@ -11,6 +11,7 @@
     <script type="text/javascript" src="Maps/map3.js"></script>
 </head>
 <body>
+<h1>Labyrinth game</h1>
 <canvas id="canvas"></canvas>
 
 <p>Death count:</p>
@@ -34,10 +35,15 @@
         canvas.width = 400;
         canvas.height = 400;
 
+        /* General map setup */
+
+
         /* Game setup */
         var game = new Labyrinth();
+        var list_of_maps = [map1, map2, map3];
         game.set_viewport(canvas.width, canvas.height);
-        game.load_map(map1);
+        game.load_map(list_of_maps[0]);
+
 
         /* Limit the viewport to the confines of the map */
         game.limit_viewport = true;
@@ -47,7 +53,7 @@
             game.update();
             game.draw(ctx);
             window.requestAnimFrame(Loop);
-        }
+        };
         Loop();
 
     </script>
