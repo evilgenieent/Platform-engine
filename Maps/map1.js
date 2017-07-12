@@ -1,3 +1,9 @@
+/*
+ * MAP 1
+ *
+ * EASY
+ */
+
 var map1 = {
 
     tile_size: 16,
@@ -72,7 +78,7 @@ var map1 = {
         y: 2,
         colour: '#fff'
     },
-    
+
     /* scripts referred to by the "script" variable in the tile keys */
     scripts: {}
 };

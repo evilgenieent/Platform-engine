@@ -1,3 +1,11 @@
+/**
+ * GAME FILE
+ *
+ * Main file is runned in concurrence with index.html when opening the game
+ *
+ */
+
+
 window.requestAnimFrame =
     window.requestAnimationFrame || window.webkitRequestAnimationFrame ||
     window.mozRequestAnimationFrame || window.oRequestAnimationFrame ||  window.msRequestAnimationFrame ||
@@ -51,5 +59,6 @@ var Loop = function () {
     game.draw(ctx);
     window.requestAnimFrame(Loop);
 };
+
 Loop();
 

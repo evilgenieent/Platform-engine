@@ -1,3 +1,8 @@
+/*
+ * MAP 3
+ *
+ * DIFFICULT
+ */
 var map3 = {
 
     tile_size: 16,

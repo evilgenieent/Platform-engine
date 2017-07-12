@@ -1,4 +1,8 @@
-
+/*
+ * MAP 2
+ *
+ * MODERATE
+ */
 var map2 = {
 
     tile_size: 16,
