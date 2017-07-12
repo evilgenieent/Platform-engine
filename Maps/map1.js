@@ -1,7 +1,6 @@
 var map1 = {
 
     tile_size: 16,
-
     /* An array representing the map tiles. Each number corresponds to a key */
     data: [
         [2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2],
@@ -73,5 +72,7 @@ var map1 = {
         y: 2,
         colour: '#fff'
     },
+    
+    /* scripts referred to by the "script" variable in the tile keys */
     scripts: {}
 };

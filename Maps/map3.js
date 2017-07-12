@@ -34,7 +34,6 @@ var map3 = {
     ],
 
     /* The coordinates at which the player spawns and the colour of the player */
-
     player: {
         x: 4,
         y: 4,
@@ -42,6 +41,6 @@ var map3 = {
     },
 
     /* scripts referred to by the "script" variable in the tile keys */
+    scripts : {}
 
-    scripts: {}
 };
