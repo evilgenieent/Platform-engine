@@ -35,45 +35,17 @@
         canvas.height = 400;
 
         /* General map setup */
-        var add_functionality = function (map) {
-            /* Gravity */
-            map.gravity = {
-                x: 0,
-                y: 0.3
-            };
-            /* Velocity limits */
-            map.vel_limit = {
-                x: 2,
-                y: 16
-            };
-            /* Movement speeds */
-            map.movement_speed = {
-                jump: 6,
-                left: 0.3,
-                right: 0.3
-            };
-        };
 
-        var add_scripts = function (themap) {
-            themap.script = {
-                change_colour: 'game.player.colour = "#"+(Math.random()*0xFFFFFF<<0).toString(16);',
-                next_level: 'alert("Yay! You made it through the map, onwards to the next!"); death_counter = 0; game.load_map(list_of_maps[++map_counter]);',
-                death: '++death_counter; if(death_counter === 3) { alert("You died! Start again."); death_counter = 0; map_counter = 0; game.load_map(list_of_maps[map_counter]); } else { game.load_map(map_counter); } document.getElementById("death_counter").innerHTML = death_counter;',
-                unlock: 'game.current_map.keys[10].solid = 0;game.current_map.keys[10].colour = "#888";'
-            };
-        };
 
         /* Game setup */
         var game = new Labyrinth();
-        game.set_viewport(canvas.width, canvas.height);
+
         var list_of_maps = [map1, map2, map3];
-
+        game.set_viewport(canvas.width, canvas.height);
         list_of_maps.forEach(function(entry) {
-            add_functionality(entry);
-            add_scripts(entry);
+            game.add_functionality(entry);
+            game.add_scripts(entry);
         });
-        alert(map3.script.next_level);
-
 
         /* Adding scripts */
 //        for(var i = 0; i < 3; i++) {
@@ -98,7 +70,7 @@
             game.update();
             game.draw(ctx);
             window.requestAnimFrame(Loop);
-        }
+        };
         Loop();
 
     </script>

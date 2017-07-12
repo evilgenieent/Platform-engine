@@ -146,7 +146,48 @@ Labyrinth.prototype.keyup = function (e) {
             break;
     }
 };
+Labyrinth.prototype.add_functionality = function (map) {
+    /* Gravity */
+    map.gravity = {
+        x: 0,
+        y: 0.3
+    };
+    /* Velocity limits */
+    map.vel_limit = {
+        x: 2,
+        y: 16
+    };
+    /* Movement speeds */
+    map.movement_speed = {
+        jump: 6,
+        left: 0.3,
+        right: 0.3
+    };
+};
 
+Labyrinth.prototype.add_scripts = function (map) {
+    map.keys = [
+        {id: 0, colour: '#333', solid: 0},
+        {id: 1, colour: '#888', solid: 0},
+        {id: 2, colour: '#555', solid: 1, bounce: 0.35},
+        {id: 3, colour: 'rgba(121, 220, 242, 0.4)', friction: {x: 0.9,y: 0.9}, gravity: {x: 0,y: 0.1}, jump: 1, fore: 1},
+        {id: 4, colour: '#777', jump: 1},
+        {id: 5, colour: '#E373FA', solid: 1, bounce: 1.1},
+        {id: 6, colour: '#666', solid: 1, bounce: 0},
+        {id: 7, colour: '#73C6FA', solid: 0, script: 'change_colour'},
+        {id: 8, colour: '#67e534', solid: 0, script: 'next_level'},
+        {id: 9, colour: '#C93232', solid: 0, script: 'death'},
+        {id: 10, colour: '#555', solid: 1},
+        {id: 11, colour: '#f1f218', solid: 0, script: 'unlock'}
+    ];
+
+    map.script = {
+        change_colour: 'game.player.colour = "#"+(Math.random()*0xFFFFFF<<0).toString(16);',
+        next_level: 'alert("Yay! You made it through the map, onwards to the next!"); death_counter = 0; game.load_map(list_of_maps[++map_counter]);',
+        death: '++death_counter; if(death_counter === 3) { alert("You died! Start again."); death_counter = 0; map_counter = 0; game.load_map(list_of_maps[map_counter]); } else { game.load_map(map_counter); } document.getElementById("death_counter").innerHTML = death_counter;',
+        unlock: 'game.current_map.keys[10].solid = 0;game.current_map.keys[10].colour = "#888";'
+    };
+};
 
 /*
 * LOADS MAP
@@ -156,16 +197,13 @@ Labyrinth.prototype.keyup = function (e) {
 */
 Labyrinth.prototype.load_map = function (map) {
 
-    if (typeof map      === 'undefined'
-        || typeof map.data === 'undefined'
-        || typeof map.keys === 'undefined') {
-
+    if (typeof map === 'undefined' || typeof map.data === 'undefined' || typeof map.keys === 'undefined') {
         this.error('Error: Invalid map data!');
-
         return false;
     }
 
     this.current_map = map;
+
 
     this.current_map.background = map.background || '#333';
     this.current_map.gravity = map.gravity || {x: 0, y: 0.3};
@@ -186,7 +224,7 @@ Labyrinth.prototype.load_map = function (map) {
 
                 _this.current_map.width = Math.max(_this.current_map.width, x);
 
-                if (tile == key.id)
+                if (tile === key.id)
                     _this.current_map.data[y][x] = key;
             });
         });
