@@ -62,6 +62,18 @@
             add_functionality(entry);
         });
 
+        /* Adding scripts */
+        for(var i = 0; i < list_of_maps.length; i++) {
+            list_of_maps[i].script = {
+                change_colour: 'game.player.colour = "#"+(Math.random()*0xFFFFFF<<0).toString(16);',
+                next_level: 'alert("Yay! You made it through the map, onwards to the next!"); death_counter = 0; game.load_map(list_of_maps[++map_counter]);',
+                death: '++death_counter; if(death_counter === 3) {alert("You died! Start again."); death_counter = 0; map_counter = 0; game.load_map(list_of_maps[map_counter]);} else {game.load_map(map_counter);} document.getElementById("death_counter").innerHTML = death_counter;',
+                unlock: 'game.current_map.keys[10].solid = 0;game.current_map.keys[10].colour = "#888";'
+            }
+            if(i === list_of_maps.length-1) {
+                map.script.next_level = 'alert("Yay! You made it through the game!"); map_counter = 0; death_counter = 0; game.load_map(list_of_maps[map_counter);'
+            }
+        }
 
         game.load_map(map1);
 

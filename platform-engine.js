@@ -29,6 +29,7 @@
 */
 
 var death_counter = 0;
+var map_counter = 0;
 
 var Labyrinth = function () {
 

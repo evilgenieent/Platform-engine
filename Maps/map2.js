@@ -82,27 +82,7 @@ var map2 = {
         [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2, 2, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
     ],
 
-    /* Gravity */
 
-    gravity: {
-        x: 0,
-        y: 0.3
-    },
-
-    /* Velocity limits */
-
-    vel_limit: {
-        x: 2,
-        y: 16
-    },
-
-    /* Movement speeds */
-
-    movement_speed: {
-        jump: 6,
-        left: 0.3,
-        right: 0.3
-    },
 
     /* The coordinates at which the player spawns and the colour of the player */
 
@@ -112,12 +92,5 @@ var map2 = {
         colour: '#fff'
     },
 
-    /* scripts referred to by the "script" variable in the tile keys */
 
-    scripts : {
-        change_colour: 'game.player.colour = "#"+(Math.random()*0xFFFFFF<<0).toString(16);',
-        next_level: 'alert("Yay! You made it through the map, onwards to the next!"); death_counter = 0; game.load_map(map3);',
-        death: '++death_counter; if(death_counter === 3) { alert("You died!"); death_counter = 0; game.load_map(map1);} else {game.load_map(map2);} document.getElementById("death_counter").innerHTML = death_counter;',
-        unlock: 'game.current_map.keys[10].solid = 0;game.current_map.keys[10].colour = "#888";'
-    }
 };
