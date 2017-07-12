@@ -34,10 +34,39 @@
         canvas.width = 400;
         canvas.height = 400;
 
+        /* General map setup */
+        var add_functionality = function (map) {
+            /* Gravity */
+            map.gravity = {
+                x: 0,
+                y: 0.3
+            };
+            /* Velocity limits */
+            map.vel_limit = {
+                x: 2,
+                y: 16
+            };
+            /* Movement speeds */
+            map.movement_speed = {
+                jump: 6,
+                left: 0.3,
+                right: 0.3
+            };
+        };
+
         /* Game setup */
         var game = new Labyrinth();
         game.set_viewport(canvas.width, canvas.height);
+        var list_of_maps = [map1, map2, map3];
+        list_of_maps.forEach(function(entry) {
+            add_functionality(entry);
+        });
+
+
         game.load_map(map1);
+
+
+
 
         /* Limit the viewport to the confines of the map */
         game.limit_viewport = true;
