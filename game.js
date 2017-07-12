@@ -16,6 +16,22 @@ canvas.height = 400;
 /* Game setup */
 var game = new Labyrinth();
 var list_of_maps = [map1, map2, map3];
+
+// list_of_maps.forEach(function (map) {
+//     map.scripts.death = get_death();
+//     map.scripts.change_colour = get_change_color();
+//     map.scripts.next_level = get_next_level();
+//     map.scripts.unlock = get_unlock();
+// });
+var map_nr = 0;
+var list_length = list_of_maps.length;
+for(var i = 0; i < list_length; i++) {
+    list_of_maps[i].scripts.death = get_death();
+    list_of_maps[i].scripts.change_colour = get_change_color();
+    list_of_maps[i].scripts.next_level = get_next_level();
+    list_of_maps[i].scripts.unlock = get_unlock();
+}
+
 game.set_viewport(canvas.width, canvas.height);
 game.load_map(list_of_maps[0]);
 

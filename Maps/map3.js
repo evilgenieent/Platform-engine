@@ -98,10 +98,5 @@ var map3 = {
 
     /* scripts referred to by the "script" variable in the tile keys */
 
-    scripts: {
-        change_colour: 'game.player.colour = "#"+(Math.random()*0xFFFFFF<<0).toString(16);',
-        next_level: 'alert("Yay! You made it through the game!"); death_counter = 0; game.load_map(map1)',
-        death: '++death_counter; if(death_counter === 3) {alert("You died! Start again."); death_counter = 0; game.load_map(map1);} else {game.load_map(map3);} document.getElementById("death_counter").innerHTML = death_counter;',
-        unlock: 'game.current_map.keys[10].solid = 0;game.current_map.keys[10].colour = "#888";'
-    }
+    scripts: {}
 };
