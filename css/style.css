@@ -37,26 +37,6 @@ p2 {
     text-decoration:none;
 }
 
-/*button {*/
-    /*background-color:transparent;*/
-    /*height: 30px;*/
-    /*width: 150px;*/
-    /*text-align: center;*/
-    /*border:1px solid #dcdcdc;*/
-    /*cursor:pointer;*/
-    /*color:#666666;*/
-    /*font-family: Helvetica, Arial, sans-serif;*/
-    /*font-size:15px;*/
-    /*font-weight:bold;*/
-    /*padding:6px 20px;*/
-    /*text-decoration:none;*/
-    /*display: block;*/
-    /*margin: 0 auto;*/
-    /*margin-top: 10px;*/
-    /*margin-bottom: 10px;*/
-/*}*/
-
-
 button {
     -moz-box-shadow:inset 0px 1px 0px 0px #ffffff;
     -webkit-box-shadow:inset 0px 1px 0px 0px #ffffff;
