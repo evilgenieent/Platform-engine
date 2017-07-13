@@ -72,17 +72,20 @@ function reset_death_counter() {
     if(death_counter > 0 && death_counter < list_length){
         death_counter = 0;
         document.getElementById("death_counter").innerHTML = death_counter;
+        game.current_map.keys[10].solid = 1;game.current_map.keys[10].colour = "#555";
         game.load_map(list_of_maps[map_nr]);
     }
 }
 
 /* Goes to the next map */
 function go_next_map() {
+    game.current_map.keys[10].solid = 1;game.current_map.keys[10].colour = "#555";
     if (map_nr < list_length-1) game.load_map(list_of_maps[++map_nr]);
 }
 
 /* Goes to the previous map */
 function go_previous_map() {
+    game.current_map.keys[10].solid = 1;game.current_map.keys[10].colour = "#555";
     if(map_nr > 0) game.load_map(list_of_maps[--map_nr]);
 }
 
@@ -92,4 +95,5 @@ function reset_game() {
     death_counter = 0;
     document.getElementById("death_counter").innerHTML = death_counter;
     game.load_map(list_of_maps[map_nr]);
+    game.current_map.keys[10].solid = 1;game.current_map.keys[10].colour = "#555";
 }
