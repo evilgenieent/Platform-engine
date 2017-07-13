@@ -2,7 +2,6 @@
 * Holds all strings used in scripts that are runned when player crosses a tile
 */
 
-
 var get_death = function () {
     return '++death_counter; if(death_counter === 3) {alert("You died! Start again."); map_nr = 0; death_counter = 0; game.load_map(list_of_maps[map_nr]);} else {game.load_map(list_of_maps[map_nr]);} document.getElementById("death_counter").innerHTML = death_counter;';
 };
