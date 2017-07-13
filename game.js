@@ -50,7 +50,7 @@ var map_nr = 0;
 var death_counter = 0;
 var list_length = list_of_maps.length;
 game.set_viewport(canvas.width, canvas.height);
-game.load_map(list_of_maps[0]);
+game.load_map(map2);
 
 /* Limit the viewport to the confines of the map */
 game.limit_viewport = true;
