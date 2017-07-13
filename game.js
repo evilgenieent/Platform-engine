@@ -19,8 +19,39 @@ canvas.width = 400;
 canvas.height = 400;
 
 function reset_death_counter() {
+    console.log(death_counter);
+    if(death_counter > 0 || death_counter < list_length){
+        death_counter = 0;
+        document.getElementById("death_counter").innerHTML = death_counter;
+        game.load_map(list_of_maps[map_nr]);
+    }else{
+        return;
+    }
+}
+
+function go_next_map() {
+    if(map_nr === list_length-1) {
+        return;
+    }else{
+        map_nr++;
+        game.load_map(list_of_maps[map_nr]);
+    }
+}
+function go_previous_map() {
+    if(map_nr === 0) {
+        return;
+    }else{
+        map_nr--;
+        game.load_map(list_of_maps[map_nr]);
+
+    }
+}
+
+function reset_game() {
+    map_nr = 0;
     death_counter = 0;
     document.getElementById("death_counter").innerHTML = death_counter;
+    game.load_map(list_of_maps[map_nr]);
 }
 
 /* GENERAL GAME SETUP */
