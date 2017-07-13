@@ -18,42 +18,6 @@ var canvas = document.getElementById('canvas'), ctx = canvas.getContext('2d');
 canvas.width = 400;
 canvas.height = 400;
 
-function reset_death_counter() {
-    console.log(death_counter);
-    if(death_counter > 0 || death_counter < list_length){
-        death_counter = 0;
-        document.getElementById("death_counter").innerHTML = death_counter;
-        game.load_map(list_of_maps[map_nr]);
-    }else{
-        return;
-    }
-}
-
-function go_next_map() {
-    if(map_nr === list_length-1) {
-        return;
-    }else{
-        map_nr++;
-        game.load_map(list_of_maps[map_nr]);
-    }
-}
-function go_previous_map() {
-    if(map_nr === 0) {
-        return;
-    }else{
-        map_nr--;
-        game.load_map(list_of_maps[map_nr]);
-
-    }
-}
-
-function reset_game() {
-    map_nr = 0;
-    death_counter = 0;
-    document.getElementById("death_counter").innerHTML = death_counter;
-    game.load_map(list_of_maps[map_nr]);
-}
-
 /* GENERAL GAME SETUP */
 
 /* Game setup */
@@ -100,3 +64,44 @@ var Loop = function () {
 
 Loop();
 
+
+/* BUTTON FUNCTIONS */
+/* Resets the number of deaths */
+function reset_death_counter() {
+    if(death_counter > 0 && death_counter < list_length){
+        death_counter = 0;
+        document.getElementById("death_counter").innerHTML = death_counter;
+        game.load_map(list_of_maps[map_nr]);
+    }else{
+        return;
+    }
+}
+
+/* Goes to the next map */
+function go_next_map() {
+    if(map_nr === list_length-1) {
+        return;
+    }else{
+        map_nr++;
+        game.load_map(list_of_maps[map_nr]);
+    }
+}
+
+/* Goes to the previous map */
+function go_previous_map() {
+    if(map_nr === 0) {
+        return;
+    }else{
+        map_nr--;
+        game.load_map(list_of_maps[map_nr]);
+
+    }
+}
+
+/* Resets game */
+function reset_game() {
+    map_nr = 0;
+    death_counter = 0;
+    document.getElementById("death_counter").innerHTML = death_counter;
+    game.load_map(list_of_maps[map_nr]);
+}
