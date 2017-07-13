@@ -40,20 +40,21 @@ list_of_maps.forEach(function (map) {
     map.scripts.change_colour = get_change_color();
     map.scripts.next_level = get_next_level();
     map.scripts.unlock = get_unlock();
-
 });
 
 
 /* Variable holds which map the player is currently on*/
 var map_nr = 0;
+
 /* Holds the number of deaths*/
 var death_counter = 0;
 var list_length = list_of_maps.length;
 game.set_viewport(canvas.width, canvas.height);
-game.load_map(map2);
+game.load_map(testMap);
 
 /* Limit the viewport to the confines of the map */
 game.limit_viewport = true;
+
 var Loop = function () {
     ctx.fillStyle = '#333';
     ctx.fillRect(0, 0, canvas.width, canvas.height);
@@ -63,7 +64,6 @@ var Loop = function () {
 };
 
 Loop();
-
 
 /* BUTTON FUNCTIONS */
 
