@@ -15,15 +15,29 @@
 </head>
 <body>
 <h1>Labyrinth game</h1>
-<canvas id="canvas"></canvas>
-<button onclick="reset_death_counter()">Reset deaths</button>
-<p>Death count:</p>
-<p id="death_counter">0</p>
+
+<div class="container">
+    <div class="buttons" >
+        <p class="buttons">Game menu</p>
+        <button onclick="reset_death_counter()">Reset deaths</button>
+        <button onclick="go_previous_map()">Previous map</button>
+        <button onclick="go_next_map()">Next map</button>
+        <button onclick="reset_game()">Reset game</button>
+    </div>
+    <div class="game"><canvas id="canvas"></canvas></div>
+    <div class="infotext">
+        <p>Death count:</p>
+        <p id="death_counter">0</p>
+        <p class="infotext">Game info:</p>
+        <p class="info">
+            Use arrows to move. As a player you have to get to the end of the Labyrinth.
+            Remember you have 3 lives to complete all maps! 3 maps are included.
+        </p>
+    </div>
+</div>
+
 <script type="text/javascript" src="game.js"></script>
-<p class="info">
-    Use arrows to move. As a player you have to get to the end of the Labyrinth.
-    Remember you have 3 lives to complete all maps! 3 maps are included.
-</p>
+
 
 </body>
 </html>
