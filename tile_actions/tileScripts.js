@@ -7,7 +7,7 @@ var get_death = function () {
 };
 
 var get_next_level = function () {
-    return ' map_nr++; if(map_nr === list_length) {alert("Yay! You made it through the game! Start all over again."); map_nr = 0; death_counter = 0; game.load_map(list_of_maps[map_nr]); } else {alert("Yay! You made it through the map, onwards to the next!"); game.load_map(list_of_maps[map_nr]);}';
+    return ' map_nr++; if(map_nr === list_length) {alert("Yay! You made it through the game! Start all over again."); map_nr = 0; death_counter = 0; game.load_map(list_of_maps[map_nr]); document.getElementById("death_counter").innerHTML = death_counter;} else {alert("Yay! You made it through the map, onwards to the next!"); game.load_map(list_of_maps[map_nr]);}';
 };
 
 var get_unlock = function () {
