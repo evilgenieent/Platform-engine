@@ -72,6 +72,8 @@ function reset_death_counter() {
     if(death_counter > 0 && death_counter < list_length){
         death_counter = 0;
         document.getElementById("death_counter").innerHTML = death_counter;
+        game.current_map.keys[10].solid = 1;
+        game.current_map.keys[10].colour = "#555";
         game.load_map(list_of_maps[map_nr]);
     }
 }
