@@ -8,13 +8,13 @@ Made a lot of code changes and restructures from the original code.
 - Set up next level to change map if you complete one
 - 3 maps, with increasing difficulty
 - Reset death counter button
+- Next/previous map button
+- Reset game button
 
 
 ## TODO:
 - Add timer
 - Add more maps
-- Add checkpoints
-- Add reset game button
 
 ### Copyright
 Copyright (c) 2013 dissimulate at codepen
