@@ -80,12 +80,16 @@ function reset_death_counter() {
 
 /* Goes to the next map */
 function go_next_map() {
-    if (map_nr < list_length-1) game.load_map(list_of_maps[++map_nr]);
+    if (map_nr < list_length-1)
+        game.current_map.keys[10].solid = 1;game.current_map.keys[10].colour = "#555";
+        game.load_map(list_of_maps[++map_nr]);
 }
 
 /* Goes to the previous map */
 function go_previous_map() {
-    if(map_nr > 0) game.load_map(list_of_maps[--map_nr]);
+    if(map_nr > 0)
+        game.current_map.keys[10].solid = 1;game.current_map.keys[10].colour = "#555";
+        game.load_map(list_of_maps[--map_nr]);
 }
 
 /* Resets game */
@@ -93,5 +97,9 @@ function reset_game() {
     map_nr = 0;
     death_counter = 0;
     document.getElementById("death_counter").innerHTML = death_counter;
+    list_of_maps.forEach(function (map) {
+        map.keys[10].solid = 1;
+        map.keys[10].colour = "#555";
+    });
     game.load_map(list_of_maps[map_nr]);
 }
