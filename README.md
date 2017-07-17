@@ -11,10 +11,5 @@ Made a lot of code changes and restructures from the original code.
 - Next/previous map button
 - Reset game button
 
-
-## TODO:
-- Add timer
-- Add more maps
-
 ### Copyright
 Copyright (c) 2013 dissimulate at codepen
